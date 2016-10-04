@@ -1,0 +1,63 @@
+<idea-plugin version="2">
+    <id>tu.wenbo.easyliteral</id>
+    <name>Easy Literal</name>
+    <version>0.1</version>
+    <vendor email="er3456qi@outlook.com">Wnbot</vendor>
+
+    <description><![CDATA[
+      A easy way to input literal value.<br>
+      It can: <br>
+      make the world a better place <-> "make", "the", "world", "a", "better", "place" <br>
+      name=Tom,friend=Jerry <-> "name": "Tom", "friend": "Jerry" <br>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      First version. Basic function.<br>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="141.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products  -->
+    <depends>com.intellij.modules.lang</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+
+        <group id="EasyLiteral" text="Easy Literal" popup="true">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+
+            <!-- Add your actions here -->
+            <action class="Action.WordsToListAction" id="EasyLiteral.Action.WordsToListAction"
+                    text="Words to string list"
+                    description="Convert words to str list">
+                <keyboard-shortcut first-keystroke="ctrl COMMA" keymap="$default"/>
+            </action>
+
+            <action class="Action.ListToWordsAction" id="EasyLiteral.Action.ListToWordsAction"
+                    text="String list to words"
+                    description="Convert str list to words">
+                <keyboard-shortcut first-keystroke="ctrl shift COMMA" keymap="$default"/>
+            </action>
+
+            <action class="Action.WordsToDictAction" id="EasyLiteral.Action.WordsToDictAction" text="Words to dict/json"
+                    description="Convert words to dict/json">
+                <keyboard-shortcut first-keystroke="ctrl QUOTE" keymap="$default"/>
+            </action>
+
+            <action class="Action.DictToWordsAction" id="EasyLiteral.Action.DictToWordsAction" text="Dict/Json to words"
+                    description="Convert dict/json to words">
+                <keyboard-shortcut first-keystroke="ctrl shift QUOTE" keymap="$default"/>
+            </action>
+        </group>
+
+    </actions>
+
+</idea-plugin>
