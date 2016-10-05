@@ -1,22 +1,35 @@
 <idea-plugin version="2">
     <id>tu.wenbo.easyliteral</id>
     <name>Easy Literal</name>
-    <version>0.2</version>
+    <version>0.3</version>
     <vendor email="er3456qi@outlook.com">Wnbot</vendor>
 
     <description><![CDATA[
       A easy way to input literal value.<br>
-      It can: <br>
-      make the world a better place <-> "make", "the", "world", "a", "better", "place" <br>
-      name=Tom,friend=Jerry <-> "name": "Tom", "friend": "Jerry" <br>
 
-      If you do not want quote the value, you can add a "`" before it:
-      age=`20 -> "age": 20
+      It can: <br>
+      <pre>make the world a better place</pre> <-> <pre>"make", "the", "world", "a", "better", "place"</pre> <br>
+      <pre>name=Tom,friend=Jerry</pre> <-> <pre>"name": "Tom", "friend": "Jerry"</pre> <br>
+
+      If you do not want quote the value, you can add a "+" before it: <br/>
+      <pre>age=+20</pre> -> <pre>"age": 20</pre>
+
+      If you do not want select the text you want to convert, just add a back quote symbol before you input: <br/>
+      <pre>`what a wonderful day</pre> -- press shortcut --> <pre>"what", "a", "wonderful", "day"</pre>
 
     ]]></description>
 
     <change-notes><![CDATA[
-      First version. Basic function.<br>
+        v0.3: <br/>
+        If you do not want select the text you want to convert, just add a ` before you input: <br/>
+        <pre>`what a wonderful day</pre> -- press shortcut --> <pre>"what", "a", "wonderful", "day"</pre> <br/>
+
+        v0.2: <br/>
+        If you do not want quote the value, you can add a "+" before it: <br/>
+        <pre>age=+20</pre> -> <pre>"age": 20</pre> <br/>
+
+        v0.1: <br/>
+        First version. Basic function.<br>
     ]]>
     </change-notes>
 

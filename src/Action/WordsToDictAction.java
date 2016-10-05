@@ -20,8 +20,8 @@ public class WordsToDictAction extends ABSTextEditAction {
     private String processKV(String s) {
         String[] kv = s.split("\\s?=\\s?");
         if (kv.length == 2) {
-            if (kv[1].startsWith("`")) {
-                return  "\"" + kv[0] + "\": " + kv[1].replace("`", "");
+            if (kv[1].startsWith("+")) {
+                return  "\"" + kv[0] + "\": " + kv[1].substring(1);
             }
             return "\"" + kv[0] + "\": \"" + kv[1] + "\"";
         } else {

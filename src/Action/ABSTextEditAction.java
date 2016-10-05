@@ -4,10 +4,12 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.command.WriteCommandAction;
+import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.TextRange;
 
 /**
  * Created by wnbot on 16-10-4.
@@ -37,12 +39,32 @@ public abstract class ABSTextEditAction extends AnAction {
         final Document document = editor.getDocument();
         final SelectionModel selectionModel = editor.getSelectionModel();
 
-        final int start = selectionModel.getSelectionStart();
-        final int end = selectionModel.getSelectionEnd();
+        final CaretModel caretModel = editor.getCaretModel();
 
         // New instance of Runnable to make a replacement
         Runnable runnable = () -> {
-            String text = selectionModel.getSelectedText();
+            String text = "";
+            int start = 0;
+            int end = 0;
+            if (selectionModel.hasSelection()) {
+                start = selectionModel.getSelectionStart();
+                end = selectionModel.getSelectionEnd();
+                text = selectionModel.getSelectedText();
+            } else {
+                // Get current line text
+                int lineStart = caretModel.getVisualLineStart();
+                end = caretModel.getOffset();
+                String lineText = document.getText(new TextRange(lineStart, end));
+
+                // Check if the text we need convert is start with `
+                int index = lineText.indexOf("`");
+                if (index != -1) {
+                    start = lineStart + index;
+                    text = lineText.substring(index+1);
+                } else {
+                    return;
+                }
+            }
 
             // Get new string text
             String newText = getNewText(text);
@@ -54,6 +76,7 @@ public abstract class ABSTextEditAction extends AnAction {
         WriteCommandAction.runWriteCommandAction(project, runnable);
         selectionModel.removeSelection();
     }
+
 
     public abstract String getNewText(String text);
 
