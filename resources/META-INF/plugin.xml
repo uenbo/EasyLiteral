@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>tu.wenbo.easyliteral</id>
     <name>Easy Literal</name>
-    <version>0.1</version>
+    <version>0.2</version>
     <vendor email="er3456qi@outlook.com">Wnbot</vendor>
 
     <description><![CDATA[
@@ -9,6 +9,10 @@
       It can: <br>
       make the world a better place <-> "make", "the", "world", "a", "better", "place" <br>
       name=Tom,friend=Jerry <-> "name": "Tom", "friend": "Jerry" <br>
+
+      If you do not want quote the value, you can add a "`" before it:
+      age=`20 -> "age": 20
+
     ]]></description>
 
     <change-notes><![CDATA[
