@@ -11,7 +11,7 @@ public class DictToWordsAction extends ABSTextEditAction {
         StringBuilder newText = new StringBuilder(processKV(words[0].trim()));
 
         for (int i = 1; i < words.length; i++) {
-            newText.append(", " + processKV(words[i].trim()));
+            newText.append(", ").append(processKV(words[i].trim()));
         }
         return newText.toString();
     }

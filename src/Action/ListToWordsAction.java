@@ -11,7 +11,7 @@ public class ListToWordsAction extends ABSTextEditAction {
         StringBuilder newText = new StringBuilder(words[0].trim().replace("\"", ""));
 
         for (int i = 1; i < words.length; i++) {
-            newText.append(" " + words[i].trim().replace("\"", ""));
+            newText.append(" ").append(words[i].trim().replace("\"", ""));
         }
         return newText.toString();
     }
