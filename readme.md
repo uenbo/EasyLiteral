@@ -2,26 +2,46 @@
 
 
 一个 IntelliJ 的插件，用于简化字面值的输入。
+
 An IntelliJ plugin provide an easy way to input literal.
 
 
-实现细节（如果你发现转换不成功，那么请看一下是不是和下面的字符串分隔有冲突）：
-Implement detail:
+## Usage
 
-name=Tom,friend=Jerry `ctrl+comma` -> "name": "Tom", "friend": "Jerry"
+### convert selected
 
-split by `","`, then split by `"\\s?=\\s?"`.
+ **ctrl+comma**
 
-
-name=Tom,friend=Jerry <- `ctrl+shift+comma`  "name": "Tom", "friend": "Jerry" 
-
-split by `","`, then split by `"\\s?:\\s?"`
-
-
-make the world a better place `ctrl+quote`  -> "make", "the", "world", "a", "better", "place"
+`make the world a better place`  -> `"make", "the", "world", "a", "better", "place"`
 
 split by `"\\s+"`
 
-make the world a better place <- `ctrl+shift+quote`  "make", "the", "world", "a", "better", "place"
+**ctrl+shift+comma**
+
+`make the world a better place` <-  `"make", "the", "world", "a", "better", "place"`
 
 split by `","`
+
+**ctrl+quote**
+
+`name=Tom,friend=Jerry` ->  `"name": "Tom", "friend": "Jerry"`
+
+
+split by `","`, then split by `"\\s?=\\s?"`.
+
+**ctrl+shift+quote**
+
+
+`name=Tom,friend=Jerry` <- `"name": "Tom", "friend": "Jerry"`
+
+split by `","`, then split by `"\\s?:\\s?"`
+
+If you do not want quote the value, you can add a "+" before it: <br/>
+<pre>age=+20  ->  "age": 20</pre>
+
+### convert without select
+
+If you do not want select the text you want to convert, just add a back quote symbol before you input: <br/>
+<pre>`what a wonderful day</pre>
+--->
+<pre>"what", "a", "wonderful", "day"</pre>
